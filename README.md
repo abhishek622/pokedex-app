@@ -1,6 +1,6 @@
 # POKEDEX
 
-PokeDex is a website which shows the information about pokemon like their power, HP, special abilitites and many more.
+PokeDex is a website which shows the information about pokemon like their power, HP, special abilities and many more.
 
 This website uses react.js, MUI, pokeapi
 
