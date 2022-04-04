@@ -3,12 +3,27 @@ import { Button, CssBaseline, Grid } from "@mui/material";
 import PokeCard from "./components/PokeCard";
 import Header from "./components/Header";
 
+const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
+
 function App() {
 	const [pokeData, setPokeData] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-	const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
+	const [url, setUrl] = useState(baseUrl);
 	const [nextUrl, setNextUrl] = useState();
 	const [prevUrl, setPrevUrl] = useState();
+
+	// handle pagination buttons
+	// const handleChange = (event, value) => {
+	// 	if (value === page) return;
+	// 	setLoading(true);
+	// 	setPage(value);
+	// 	if (value === 1) {
+	// 		setUrl(baseUrl);
+	// 	} else {
+	// 		setUrl(`${baseUrl}?offset=${(value - 1) * 20}&limit=20`);
+	// 	}
+	// 	setLoading(false);
+	// };
 
 	const fetchData = async () => {
 		setIsLoading(true);
@@ -34,6 +49,7 @@ function App() {
 	};
 
 	useEffect(() => {
+		setPokeData([]);
 		fetchData();
 	}, [url]);
 
@@ -45,28 +61,14 @@ function App() {
 				{pokeData.map((item) => {
 					return (
 						<Grid item xs={3} key={item.id}>
-							{isLoading ? (
-								<h1>loading ...</h1>
-							) : (
-								<PokeCard
-									name={item.name}
-									id={item.id}
-									src={item.sprites.front_default}
-									data={item}
-								/>
-							)}
+							{isLoading ? <h1>loading ...</h1> : <PokeCard data={item} />}
 						</Grid>
 					);
 				})}
 			</Grid>
-			<div
-				style={{
-					textAlign: "center",
-				}}
-			>
+			<div style={{ textAlign: "center" }}>
 				<Button
 					onClick={() => {
-						setPokeData([]);
 						setUrl(prevUrl);
 					}}
 					variant="contained"
@@ -76,7 +78,6 @@ function App() {
 				</Button>
 				<Button
 					onClick={() => {
-						setPokeData([]);
 						setUrl(nextUrl);
 					}}
 					variant="contained"

@@ -1,7 +1,6 @@
 import {
 	Dialog,
 	DialogContent,
-	DialogContentText,
 	DialogTitle,
 	IconButton,
 	List,
