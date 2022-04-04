@@ -1,6 +1,6 @@
 # POKEDEX
 
-PokeDex is a website which shows the information about pokemon like their power, HP, special abilities and many more.
+PokeDex is a website which shows the information about pokémon like their power, HP, special abilities and many more.
 
 This website uses react.js, MUI, pokeapi
 
@@ -21,5 +21,5 @@ This website uses react.js, MUI, pokeapi
 
 - You can star ⭐ and fork 🍴this repository on GitHub
 - use the `git clone` command along with the URL to setup your local copy
-- Make cahnges in your local copy and keep it up-to-date with the project as you don’t want to make a pull request for code that will cause conflicts.
+- Make changes in your local copy and keep it up-to-date with the project as you don’t want to make a pull request for code that will cause conflicts.
 - Once you fix the issue make a PR. I will review your PR & will merge it if everything works fine.
