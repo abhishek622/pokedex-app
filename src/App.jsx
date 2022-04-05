@@ -9,7 +9,7 @@ const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 
 const theme=createTheme({
 	typography:{
-	    fontFamily:"Trebuchet MS",
+	    fontFamily:"Carter One, cursive",
 		h3: {
         fontSize:'5em',
 		backgroundImage:'conic-gradient(from 60deg, red, yellow, green,blue) ',
