@@ -2,8 +2,22 @@ import React, { useEffect, useState } from "react";
 import { Button, CssBaseline, Grid } from "@mui/material";
 import PokeCard from "./components/PokeCard";
 import Header from "./components/Header";
+import { ThemeProvider} from "@mui/material";
+import { createTheme } from '@mui/material/styles';
 
 const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
+
+const theme=createTheme({
+	typography:{
+	    fontFamily:"Trebuchet MS",
+		h3: {
+        fontSize:'5em',
+		backgroundImage:'conic-gradient(from 60deg, red, yellow, green,blue) ',
+        backgroundClip: 'text',
+        color: 'transparent'
+		}
+	}
+})
 
 function App() {
 	const [pokeData, setPokeData] = useState([]);
@@ -56,7 +70,9 @@ function App() {
 	return (
 		<div>
 			<CssBaseline />
-			<Header />
+			<ThemeProvider theme={theme}>
+			  <Header />
+			</ThemeProvider>
 			<Grid container spacing={3}>
 				{pokeData.map((item) => {
 					return (
