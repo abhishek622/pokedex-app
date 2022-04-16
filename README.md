@@ -13,7 +13,7 @@ This website uses react.js, MUI, pokeapi
 ## ⚙️TODO
 
 - Update home page UI to get better view of pokemon list
-- Update pagination UI with [MUI Outlined pagination](https://mui.com/components/pagination/#outlined-pagination)
+- ~Update pagination UI with [MUI Outlined pagination](https://mui.com/components/pagination/#outlined-pagination)~
 - Update MUI Dialog UI
 - Make all the components of website responsive
 
