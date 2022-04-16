@@ -1,16 +1,17 @@
 import { Typography } from "@mui/material";
 import React from "react";
+import { localStrings } from "../../../../shared/constants";
+
+const headerStyle = {
+  marginBottom: "1rem",
+  textAlign: "center",
+};
 
 function Header() {
   return (
-    <div
-      style={{
-        marginBottom: "1rem",
-        textAlign: "center",
-      }}
-    >
+    <div style={headerStyle}>
       <Typography variant="h3" gutterBottom>
-        POKEDEX
+        {localStrings.header}
       </Typography>
     </div>
   );
