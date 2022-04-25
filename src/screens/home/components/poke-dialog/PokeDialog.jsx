@@ -9,6 +9,8 @@ import {
   ListItem,
   ListItemText,
   Typography,
+  Stack,
+  Chip
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { POKE_IMAGE_BY_ID } from "../../../../services/api/Api.constant";
@@ -20,6 +22,19 @@ const pokeDialogContentStyle = {
   alignItems: "center",
 };
 
+const FlexBox = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: "0rem 0.8rem",
+  color: "white",
+};
+
+function capitalizeLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 class PokeDialog extends Component {
   constructor(props) {
     super(props);
@@ -27,42 +42,49 @@ class PokeDialog extends Component {
 
   renderDialogHeader = () => {
     return (
-      <>
-        <IconButton aria-label="close" onClick={this.props.handleClose}>
-          <CloseIcon />
-        </IconButton>
+      <div style={FlexBox}>
         <DialogTitle id="alert-dialog-title">
-          {this.props.pokeDex.name}
+          {capitalizeLetter(this.props.pokeDex.name)}
         </DialogTitle>
-      </>
+        <IconButton aria-label="close" onClick={this.props.handleClose}>
+          <CloseIcon color="default" />
+        </IconButton>
+      </div>
     );
   };
 
   renderDialogContent = () => {
     return (
       <DialogContent>
-        <img src={POKE_IMAGE_BY_ID(this.props.pokeDex.id)} alt="" />
-        <div style={pokeDialogContentStyle}>
-          {this.props.pokeDex.abilities.map((poke) => (
-            <Typography
-              variant="subtitle2"
-              sx={{
-                border: "1px solid black",
-                padding: "5px",
-              }}
-              key={poke.ability.name}
-            >
-              {poke.ability.name}
-            </Typography>
-          ))}
-        </div>
-        <List dense>
+        <Stack direction="row" spacing={5} sx={{ marginBottom: "1rem" }}>
+          <img
+            src={POKE_IMAGE_BY_ID(this.props.pokeDex.id)}
+            alt=""
+            height="120"
+            width="120"
+          />
+          <Stack spacing={1} justifyContent="center">
+              {this.props.pokeDex.abilities.map(poke => (
+                <Chip
+                  label={poke.ability.name}
+                  key={poke.ability.name}
+                  color="primary"
+
+                />
+              ))}
+          </Stack>
+        </Stack>
           {this.props.pokeDex.stats.map((poke, idx) => (
-            <ListItem key={idx}>
-              <ListItemText primary={poke.stat.name + " : " + poke.base_stat} />
-            </ListItem>
+            <div style={FlexBox}>
+            <Typography variant="subtitle1">
+              {capitalizeLetter(poke.stat.name)}:
+            </Typography>
+            <Typography variant="subtitle2">
+              {poke.base_stat}
+            </Typography>
+            </div>
+
           ))}
-        </List>
       </DialogContent>
     );
   };
@@ -74,6 +96,7 @@ class PokeDialog extends Component {
         onClose={this.props.handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        sx={{'& .MuiPaper-root':{borderRadius: "1rem",backgroundColor: "#595761"},'& .MuiDialogContent-root':{padding:"10px 24px"}}}
       >
         {!this.props.pokeDex ? (
           <h6>{localStrings.noData}</h6>
