@@ -5,9 +5,6 @@ import {
   DialogContent,
   DialogTitle,
   IconButton,
-  List,
-  ListItem,
-  ListItemText,
   Typography,
   Stack,
   Chip
@@ -16,11 +13,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { POKE_IMAGE_BY_ID } from "../../../../services/api/Api.constant";
 import { localStrings } from "../../../../shared/constants";
 
-const pokeDialogContentStyle = {
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-};
 
 const FlexBox = {
   display: "flex",
@@ -75,7 +67,7 @@ class PokeDialog extends Component {
           </Stack>
         </Stack>
           {this.props.pokeDex.stats.map((poke, idx) => (
-            <div style={FlexBox}>
+            <div style={FlexBox} key={idx}>
             <Typography variant="subtitle1">
               {capitalizeLetter(poke.stat.name)}:
             </Typography>

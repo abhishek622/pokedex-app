@@ -1,15 +1,7 @@
-import { Button, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import React, { Component } from "react";
 import { localStrings } from "../../../../shared/constants";
 import PokeDialog from "../poke-dialog/PokeDialog";
-import "./PokeCard.css";
-
-const pokeCardStyle = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-};
 
 class PokeCard extends Component {
   constructor(props) {
@@ -30,15 +22,22 @@ class PokeCard extends Component {
 
   renderPokeDetail = () => {
     return (
-      <>
-        <img
-          src={this.props.data.sprites.front_default}
+      <div
+      style={{
+        display:"flex",
+        justifyContent:"space-around",
+      }}
+    >
+      <CardMedia
+      component='img'
+          image={this.props.data.sprites.front_default}
           alt={this.props.data.name}
-          height={160}
-          width={160}
+         sx={{width:120, height:120}}
         />
+        <Box sx={{display:'flex', flexDirection:'column'}}>
+          <CardContent sx={{flex:'1 0 auto'}}>
         <Typography variant="h6" gutterBottom>
-          {this.props.data.id}: {this.props.data.name}
+         {this.props.data.name}
         </Typography>
         <Typography variant="body2" gutterBottom>
           {localStrings.xp}: {this.props.data.base_experience}
@@ -46,7 +45,9 @@ class PokeCard extends Component {
         <Button size="small" onClick={this.handleClickOpen}>
           {localStrings.more}
         </Button>
-      </>
+        </CardContent>
+        </Box>
+      </div>
     );
   };
 
@@ -62,12 +63,10 @@ class PokeCard extends Component {
 
   render() {
     return (
-      <>
-        <div style={pokeCardStyle} id="card">
+        <Card>
           {this.renderPokeDetail()}
           {this.renderPokeDialog()}
-        </div>
-      </>
+        </Card>
     );
   }
 }
