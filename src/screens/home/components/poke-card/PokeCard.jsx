@@ -2,6 +2,7 @@ import { Button, Typography } from "@mui/material";
 import React, { Component } from "react";
 import { localStrings } from "../../../../shared/constants";
 import PokeDialog from "../poke-dialog/PokeDialog";
+import "./PokeCard.css";
 
 const pokeCardStyle = {
   display: "flex",
@@ -62,7 +63,7 @@ class PokeCard extends Component {
   render() {
     return (
       <>
-        <div style={pokeCardStyle}>
+        <div style={pokeCardStyle} id="card">
           {this.renderPokeDetail()}
           {this.renderPokeDialog()}
         </div>

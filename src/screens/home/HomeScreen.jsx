@@ -13,6 +13,7 @@ import PokeCard from "./components/poke-card/PokeCard";
 import Header from "./components/header/Header";
 import { fetchData } from "../../services/requests";
 import { localStrings } from "../../shared/constants";
+import "./HomeScreen.css";
 
 const paginationStyle = {
   display: "flex",
@@ -131,7 +132,7 @@ class HomeScreen extends Component {
     const { pokeData } = this.state;
     return (
       <div>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} id="grids">
           {pokeData.map((item) => {
             return (
               <Grid item xs={3} key={item.id}>
