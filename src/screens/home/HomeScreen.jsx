@@ -4,7 +4,7 @@ import {
   Pagination,
   Stack,
   CssBaseline,
-  Grid,
+  Grid
 } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 
@@ -13,7 +13,6 @@ import PokeCard from "./components/poke-card/PokeCard";
 import Header from "./components/header/Header";
 import { fetchData } from "../../services/requests";
 import { localStrings } from "../../shared/constants";
-import "./HomeScreen.css";
 
 const paginationStyle = {
   display: "flex",
@@ -131,11 +130,11 @@ class HomeScreen extends Component {
   renderPokeCards = () => {
     const { pokeData } = this.state;
     return (
-      <div>
+      <div style={{ padding:'1rem 2rem'}} >
         <Grid container spacing={3} id="grids">
           {pokeData.map((item) => {
             return (
-              <Grid item xs={3} key={item.id}>
+              <Grid item xs={12} md={3} key={item.id}>
                 {this.state.isLoading ? (
                   <h1>{localStrings.loading}</h1>
                 ) : (
@@ -151,7 +150,7 @@ class HomeScreen extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{  backgroundColor:'rgba(207,207,208,0.56)'}}>
         {this.renderHeader()}
         {this.renderPagination()}
         {this.renderPokeCards()}
